@@ -1,0 +1,24 @@
+﻿using System;
+using SharpToken;
+
+class Program2
+{
+    static void Main2()
+    {
+        // Load the tokenizer (cl100k_base is used for GPT-4/GPT-3.5 models)
+        var tokenizer = GptEncoding.GetEncoding("cl100k_base");
+
+        string text = "I love programming in .NET";
+
+        // Tokenize the text (returns token IDs)
+        var tokenIds = tokenizer.Encode(text);
+
+        // Decode token IDs back to text
+        string decodedText = tokenizer.Decode(tokenIds);
+
+        // Display the results
+        Console.WriteLine("Original Text: " + text);
+        Console.WriteLine("Tokenized Output: " + string.Join(", ", tokenIds));
+        Console.WriteLine("Decoded Text: " + decodedText);
+    }
+}
